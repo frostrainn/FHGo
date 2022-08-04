@@ -30,7 +30,7 @@
 * Redis
 * MySQL
 * PostgreSQL
-* 
+* NSQ
 
 ## 三方库
 

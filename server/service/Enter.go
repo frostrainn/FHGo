@@ -1,7 +1,15 @@
 package service
 
+import (
+	"fhgo/service/danmu"
+	"fhgo/service/system"
+)
+
 type ServiceGroup struct {
-	UserService
+	SystemService system.ServiceGroup
+	DanMuService  danmu.ServiceGroup
 }
+
+var ServiceGroupApi = new(ServiceGroup)
 
 var Group = new(ServiceGroup)

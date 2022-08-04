@@ -1,5 +1,7 @@
 package global
 
+import "gorm.io/gorm"
+
 //var (
 //	FHG_DB                  *gorm.DB
 //	FHG_DBList              map[string]*gorm.DB
@@ -13,3 +15,7 @@ package global
 //	BlackCache local_cache.Cache
 //	lock       sync.RWMutex
 //)
+
+var (
+	DB *gorm.DB
+)
