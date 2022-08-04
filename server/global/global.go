@@ -1,6 +1,9 @@
 package global
 
-import "gorm.io/gorm"
+import (
+	"go.uber.org/zap"
+	"gorm.io/gorm"
+)
 
 //var (
 //	FHG_DB                  *gorm.DB
@@ -17,5 +20,6 @@ import "gorm.io/gorm"
 //)
 
 var (
-	DB *gorm.DB
+	DB     *gorm.DB
+	Logger *zap.SugaredLogger
 )

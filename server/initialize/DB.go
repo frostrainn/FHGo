@@ -10,10 +10,10 @@ import (
 func ConnDB() {
 	mysql, err := drivers.Mysql()
 	if err != nil {
-		fmt.Println("连接错误")
+		fmt.Println("MySQL数据库连接错误")
 		return
 	}
-	fmt.Println("连接成功")
+	fmt.Println("数据库连接建立成功")
 	fmt.Println(mysql)
 	global.DB = mysql
 }
