@@ -1,8 +1,15 @@
 package main
 
-import "fhgo/initialize"
+import (
+	"fhgo/initialize"
+)
 
 func main() {
-	initialize.ConnDB()
-
+	initialize.ConnDB()      //连接数据库
+	initialize.CreateTable() //创建表
+	r := initialize.Routers()
+	err := r.Run()
+	if err != nil {
+		return
+	}
 }

@@ -7,12 +7,12 @@ import (
 
 func Routers() *gin.Engine {
 	Router := gin.Default()
-	s := service.ServiceGroupApi.SystemService.ExampleService
+	s := service.ServiceGroupApi.DanMuService.PostAndGetService
 	//
 	PublicGroup := Router.Group("")
 	{
-		PublicGroup.GET("", s.Example)
-		PublicGroup.POST("/SendDanMu")
+		PublicGroup.GET("/GetDanMu", s.GetDanMu)
+		PublicGroup.POST("/SendDanMu", s.PostDanMu)
 	}
 
 	//PublicGroup.Handlers()

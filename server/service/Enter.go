@@ -11,5 +11,3 @@ type ServiceGroup struct {
 }
 
 var ServiceGroupApi = new(ServiceGroup)
-
-var Group = new(ServiceGroup)
