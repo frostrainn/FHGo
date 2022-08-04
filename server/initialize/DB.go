@@ -4,17 +4,15 @@ import (
 	"fhgo/drivers"
 	"fhgo/global"
 	"fhgo/models"
-	"fmt"
 )
 
 func ConnDB() {
 	mysql, err := drivers.Mysql()
 	if err != nil {
-		fmt.Println("MySQL数据库连接错误")
+		global.Logger.Error("数据库连接失败")
 		return
 	}
-	fmt.Println("数据库连接建立成功")
-	fmt.Println(mysql)
+	global.Logger.Info("数据库连接成功")
 	global.DB = mysql
 }
 
@@ -27,9 +25,12 @@ func CheckTableExists(dst ...interface{}) {
 
 func CreateTable() {
 	m := global.DB.Migrator()
-	err := m.CreateTable(&models.DanMu{})
-	if err != nil {
-		return
+	if !m.HasTable(&models.DanMu{}) {
+		global.Logger.Info("DanMu表不存在，新建DanMu表")
+		err := m.CreateTable(&models.DanMu{})
+		if err != nil {
+			global.Logger.Error("新建DanMu表失败")
+			return
+		}
 	}
-
 }
