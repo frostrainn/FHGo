@@ -16,6 +16,7 @@ func Routers() *gin.Engine {
 	PublicGroup := Router.Group("")
 	{
 		PublicGroup.GET("/GetDanMu", s.GetDanMu)
+		PublicGroup.GET("/getAny", s.GetAny)
 		PublicGroup.POST("/SendDanMu", s.PostDanMu)
 	}
 

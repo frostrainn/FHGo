@@ -35,3 +35,12 @@ func (p *PostAndGetService) GetDanMu(c *gin.Context) {
 		"message": "pong",
 	})
 }
+
+func (p *PostAndGetService) GetAny(c *gin.Context) {
+	//l := []string{"998", "kiMoJi", "ksm"}
+	//g := []map[string]string{{"new": "123"}, {"new": "456"}, {"new": "789"}}
+	h := []interface{}{3, "998", 5.208}
+	c.JSON(200, gin.H{
+		"list": h,
+	})
+}
