@@ -2,13 +2,13 @@ package models
 
 type DanMu struct {
 	GlobalModel
-	UserId   string
-	VideoId  string
-	Time     float64
-	Text     string
-	Color    int
-	Position int
-	Type     uint
+	UserId   string  `json:"userId"`
+	VideoId  string  `json:"videoId"`
+	Time     float64 `json:"time"`
+	Text     string  `json:"text"`
+	Color    int     `json:"color"`
+	Position int     `json:"position"`
+	Type     uint    `json:"type"`
 }
 
 //"id": 弹幕id

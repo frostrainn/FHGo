@@ -6,6 +6,10 @@ import (
 )
 
 func Routers() *gin.Engine {
+	//console 日志染色 关闭/打开
+	//gin.DisableConsoleColor()
+	gin.ForceConsoleColor()
+
 	Router := gin.Default()
 	s := service.ServiceGroupApi.DanMuService.PostAndGetService
 	//
