@@ -4,6 +4,7 @@ import (
 	"fhgo/drivers"
 	"fhgo/global"
 	"fhgo/models"
+	"fmt"
 )
 
 func ConnDB() {
@@ -14,6 +15,11 @@ func ConnDB() {
 	}
 	global.Logger.Info("数据库连接成功")
 	global.DB = mysql
+}
+
+func ConnRedis() {
+	drivers.Redis()
+	fmt.Println("Redis连接成功")
 }
 
 func CheckTableExists(dst ...interface{}) {
