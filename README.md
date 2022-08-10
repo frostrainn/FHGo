@@ -54,7 +54,7 @@ Gin路由组
 - [ ] casbin/ 访问控制
 - [ ] go-micro/ 微服务框架
 - [ ] protobuf/ 序列化
-- [ ] gRPC/ RPC服务
+- [x] gRPC/ RPC服务
 - [ ] Docker/ 容器化部署
 
  
