@@ -7,11 +7,12 @@
 计划实现各种常用功能
 
 目前已实现：
-Zap日志库
-LumberJack日志分割存储
-Gorm连接MySQL
-Go-redis连接Redis
-Gin路由组
+- Zap日志库
+- LumberJack日志分割存储
+- Gorm连接MySQL
+- Go-redis连接Redis
+- Gin路由组
+- gRPC 流式/普通交互
 
 ## Features
 
@@ -49,12 +50,13 @@ Gin路由组
 - [X] LumberJack/ 日志分割存储、备份
 - [X] gorm/ 数据库操作
 - [X] go-redis/ Redis
+- [X] protobuf/ 序列化
+- [X] gRPC/ RPC服务
 - [ ] ants/ 高性能Goroutine池
 - [ ] go-jwt/ Json Web Token签发
 - [ ] casbin/ 访问控制
 - [ ] go-micro/ 微服务框架
-- [ ] protobuf/ 序列化
-- [x] gRPC/ RPC服务
+- [ ] go-kratos/ 微服务框架(bilibili)
 - [ ] Docker/ 容器化部署
 
  
