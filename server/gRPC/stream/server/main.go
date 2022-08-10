@@ -71,6 +71,7 @@ func (s *personService) SearchIO(server person.SearchService_SearchIOServer) err
 	for {
 		s := <-str
 		if s == "概述了" {
+			server.Send(&person.PersonRes{Name: s})
 			break
 		}
 		server.Send(&person.PersonRes{Name: s})
