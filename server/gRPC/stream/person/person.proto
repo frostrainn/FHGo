@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package person;
+
+option go_package = "./;person";
+
+message PersonReq{
+  string Name = 1;
+  int32 Sex = 2;
+}
+
+message PersonRes{
+  string Name = 1;
+  int32 Sex = 2;
+}
+
+service SearchService{
+  rpc Search(PersonReq) returns (PersonRes);
+  rpc SearchIn(stream PersonReq) returns (PersonRes);
+  rpc SearchOut(PersonReq) returns (stream PersonRes);
+  rpc SearchIO(stream PersonReq) returns (stream PersonRes);
+}

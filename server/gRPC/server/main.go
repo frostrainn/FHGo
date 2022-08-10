@@ -22,5 +22,4 @@ func main() {
 	s := grpc.NewServer()
 	hello.RegisterHelloGRPCServer(s, &server{})
 	s.Serve(l)
-
 }

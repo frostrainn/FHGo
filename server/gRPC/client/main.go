@@ -11,6 +11,6 @@ func main() {
 	conn, _ := grpc.Dial("localhost:1998", grpc.WithInsecure())
 	defer conn.Close()
 	client := hello.NewHelloGRPCClient(conn)
-	res, _ := client.SayHi(context.Background(), &hello.Req{Message: "你好，我是客户端"})
+	res, _ := client.SayHi(context.Background(), &hello.Req{Message: "你好，我真的是是客户端"})
 	fmt.Println(res.GetMessage())
 }

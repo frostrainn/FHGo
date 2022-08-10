@@ -11,7 +11,6 @@ message Req{
 
 message Res{
   string message = 1;
-
 }
 
 service HelloGRPC{
