@@ -4,8 +4,11 @@ import (
 	"context"
 	"fhgo/gRPC/stream/person"
 	"fmt"
+	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
 	"net"
+	"net/http"
+	"sync"
 	"time"
 )
 
@@ -80,8 +83,33 @@ func (s *personService) SearchIO(server person.SearchService_SearchIOServer) err
 }
 
 func main() {
+	wg := sync.WaitGroup{}
+	wg.Add(2)
+	go RegGRPCServer(&wg)
+	go RegGRPCGateWay(&wg)
+	wg.Wait()
+}
+
+func RegGRPCServer(wg *sync.WaitGroup) {
 	l, _ := net.Listen("tcp", ":1999")
 	s := grpc.NewServer()
 	person.RegisterSearchServiceServer(s, &personService{})
 	s.Serve(l)
+	wg.Done()
+}
+
+func RegGRPCGateWay(wg *sync.WaitGroup) {
+	conn, _ := grpc.DialContext(context.Background(), "localhost:1999", grpc.WithBlock(), grpc.WithInsecure())
+
+	mux := runtime.NewServeMux()
+	gwServer := http.Server{
+		Handler: mux,
+		Addr:    ":8769",
+	}
+	err := person.RegisterSearchServiceHandler(context.Background(), mux, conn)
+	if err != nil {
+		fmt.Println(err)
+	}
+	gwServer.ListenAndServe()
+	wg.Done()
 }
