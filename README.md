@@ -13,6 +13,7 @@
 - Go-redis连接Redis
 - Gin路由组
 - gRPC 流式/普通交互
+- gRPC - Gateway HTTP
 
 ## Features
 
@@ -52,6 +53,7 @@
 - [X] go-redis/ Redis
 - [X] protobuf/ 序列化
 - [X] gRPC/ RPC服务
+- [X] gRPC-Gateway/ RPC服务 - HTTP
 - [ ] ants/ 高性能Goroutine池
 - [ ] go-jwt/ Json Web Token签发
 - [ ] casbin/ 访问控制
@@ -59,5 +61,5 @@
 - [ ] go-kratos/ 微服务框架(bilibili)
 - [ ] Docker/ 容器化部署
 
- 
+
 
