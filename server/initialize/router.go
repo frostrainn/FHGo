@@ -20,6 +20,12 @@ func Routers() *gin.Engine {
 		PublicGroup.POST("/SendDanMu", s.PostDanMu)
 	}
 
+	sys := service.ServiceGroupApi.SystemService.Hello
+	SystemGroup := Router.Group("")
+	{
+		SystemGroup.GET("/hello", sys.Hello)
+	}
+
 	//PublicGroup.Handlers()
 	//PublicGroup.GET()
 	return Router
