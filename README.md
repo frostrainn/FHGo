@@ -14,6 +14,7 @@
 - Gin路由组
 - gRPC 流式/普通交互
 - gRPC - Gateway HTTP
+- 优雅重启
 
 ## Features
 
@@ -54,6 +55,7 @@
 - [X] protobuf/ 序列化
 - [X] gRPC/ RPC服务
 - [X] gRPC-Gateway/ RPC服务 - HTTP
+- [X] fvbock/endless/ 优雅重启(热更新)
 - [ ] ants/ 高性能Goroutine池
 - [ ] go-jwt/ Json Web Token签发
 - [ ] casbin/ 访问控制
