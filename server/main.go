@@ -2,18 +2,31 @@ package main
 
 import (
 	"fhgo/initialize"
-	"github.com/fvbock/endless"
+	"net/http"
+	_ "net/http/pprof"
 )
 
 func main() {
+	r := initialize.Routers()
+	http.ListenAndServe(":8080", r)
+	//err := r.Run(":8080")
+	//err = endless.ListenAndServe(":8080", r)	//优雅重启
+	//if err != nil {
+	//	return
+	//}
+
+}
+
+func init() {
 	initialize.InitLogger()
 	initialize.ConnDB()      //连接数据库
 	initialize.CreateTable() //创建表
 	initialize.ConnRedis()   //连接Redis
-	r := initialize.Routers()
-	err := endless.ListenAndServe(":8080", r)
-	if err != nil {
-		return
-	}
-
+	//pprof 服务器
+	go func() {
+		err := http.ListenAndServe(":6060", nil)
+		if err != nil {
+			return
+		}
+	}()
 }

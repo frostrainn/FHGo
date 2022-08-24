@@ -1,30 +1,51 @@
 package main
 
 import (
-	"context"
 	"fmt"
-	"time"
 )
 
-func main() {
-	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
-	defer cancel()
+var (
+	Ga int = 99
+)
 
-	go func() {
-		go watch(ctx, 1)
-		go watch(ctx, 2)
-	}()
+const (
+	v int = 199
+)
 
-	select {
-	case <-ctx.Done():
-		fmt.Printf("watch %d %s\n", 0, ctx.Err())
+func GetGa() func() int {
+
+	if Ga := 55; Ga < 60 {
+		fmt.Println("GetGa if 中：", Ga)
 	}
 
-	fmt.Println("finished")
+	for Ga := 2; ; {
+		fmt.Println("GetGa循环中：", Ga)
+		break
+	}
+
+	fmt.Println("GetGa函数中：", Ga)
+
+	return func() int {
+		Ga += 1
+		return Ga
+	}
 }
 
-func watch(ctx context.Context, flag int) {
-	fmt.Printf("doing something flag:%d\n", flag)
-	time.Sleep(5 * time.Second)
-	fmt.Println("finished flag:", flag)
+func main() {
+	Ga := "string"
+	fmt.Println("main函数中：", Ga)
+
+	b := GetGa()
+	fmt.Println("main函数中：", b(), b(), b(), b())
+
+	v := 1
+	{
+		v := 2
+		fmt.Println(v)
+		{
+			v := 3
+			fmt.Println(v)
+		}
+	}
+	fmt.Println(v)
 }
