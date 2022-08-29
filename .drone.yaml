@@ -8,7 +8,7 @@ platform:
 
 
 steps:
-  - name: build
+  - name: go build
     environment:
       KEY: VALUE
     commands:
