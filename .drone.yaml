@@ -1,0 +1,42 @@
+kind: pipeline
+type: exec
+name: build
+
+platform:
+  os: linux
+  arch: amd64
+
+
+steps:
+  - name: build
+    environment:
+      KEY: VALUE
+    commands:
+      - echo $KEY
+      - echo $${0}
+      - echo $${env}
+      - export GOROOT=/usr/local/go
+      - export GOPATH=/data/gopackage
+      - export GOBIN=$GOROOT/bin
+      - export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+      - export GOPROXY=https://goproxy.cn
+      - cd server
+      - pwd
+      - go mod tidy
+      - CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
+
+  - name: image build
+    commands:
+      - pwd
+      - docker build -t fhgo:latest .
+      - docker image prune -f
+
+  - name: docker run
+    commands:
+      - pwd
+      - echo `docker stop fhgo`
+      - echo `docker rm fhgo`
+      - docker run -d --name  fhgo  -p 18080:8080 -p 16060:6060 fhgo
+trigger:
+  branch:
+    - master
