@@ -2,6 +2,9 @@
 
 # FHGo
 
+[![Build Status](https://dline.zhangzhongyuan.cn/api/badges/FirstOrg/FHGo/status.svg)](https://dline.zhangzhongyuan.cn/FirstOrg/FHGo)
+
+
 究极缝合怪工程
 
 计划实现各种常用功能
@@ -15,6 +18,7 @@
 - gRPC 流式/普通交互
 - gRPC - Gateway HTTP
 - 优雅重启
+- CI/CD
 
 ## Features
 
