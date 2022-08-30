@@ -14,7 +14,6 @@ func main() {
 	//if err != nil {
 	//	return
 	//}
-
 }
 
 func init() {
@@ -23,6 +22,7 @@ func init() {
 	initialize.CreateTable() //创建表
 	initialize.ConnRedis()   //连接Redis
 	//pprof 服务器
+	// /debug/pprof
 	go func() {
 		err := http.ListenAndServe(":6060", nil)
 		if err != nil {
