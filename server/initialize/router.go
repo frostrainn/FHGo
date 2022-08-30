@@ -24,6 +24,7 @@ func Routers() *gin.Engine {
 	SystemGroup := Router.Group("")
 	{
 		SystemGroup.GET("/hello", sys.Hello)
+		SystemGroup.POST("/sign/vgHweKN", sys.Sign)
 	}
 
 	//PublicGroup.Handlers()
