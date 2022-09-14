@@ -25,6 +25,7 @@ func Routers() *gin.Engine {
 	{
 		SystemGroup.GET("/hello", sys.Hello)
 		SystemGroup.POST("/sign/vgHweKN", sys.Sign)
+		SystemGroup.POST("/report", sys.Report)
 	}
 
 	//PublicGroup.Handlers()

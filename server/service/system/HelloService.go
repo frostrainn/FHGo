@@ -4,16 +4,46 @@ import (
 	"crypto/hmac"
 	"crypto/sha256"
 	"encoding/base64"
+	"encoding/json"
 	"github.com/gin-gonic/gin"
 	"io"
+	"log"
 )
 
 type Hello struct {
 }
 
+type Sub struct {
+	Id       int    `json:"id"`
+	UserKey  string `json:"userkey"`
+	Uid      string `json:"uid"`
+	Icon     string `json:"icon"`
+	Nickname string `json:"nickname"`
+	Deleted  string `json:"deleted"`
+}
+
+type full struct {
+	RoleInfo []Sub `json:"roleInfos"`
+}
+
 func (h *Hello) Hello(c *gin.Context) {
 	c.JSON(200, gin.H{
 		"message": "pong",
+	})
+}
+
+func (h *Hello) Report(c *gin.Context) {
+
+	var p full
+	err := json.NewDecoder(c.Request.Body).Decode(&p)
+	if err != nil {
+		c.JSON(404, gin.H{
+			"message": "notfound",
+		})
+	}
+	log.Println(p)
+	c.JSON(200, gin.H{
+		"message": "ok",
 	})
 }
 
