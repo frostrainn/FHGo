@@ -19,7 +19,7 @@ type Sub struct {
 	Uid      string `json:"uid"`
 	Icon     string `json:"icon"`
 	Nickname string `json:"nickname"`
-	Deleted  string `json:"deleted"`
+	Deleted  int    `json:"deleted"`
 }
 
 type full struct {
@@ -38,12 +38,19 @@ func (h *Hello) Report(c *gin.Context) {
 	err := json.NewDecoder(c.Request.Body).Decode(&p)
 	if err != nil {
 		c.JSON(404, gin.H{
-			"message": "notfound",
+			"code":    "404",
+			"message": err.Error(),
 		})
+		log.Println(err)
+		log.Println(p)
+		return
+
 	}
 	log.Println(p)
 	c.JSON(200, gin.H{
+		"code":    "0",
 		"message": "ok",
+		"obj":     p,
 	})
 }
 
