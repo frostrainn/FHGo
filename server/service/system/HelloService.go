@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"io"
 	"log"
+	"math/rand"
+	"time"
 )
 
 type Hello struct {
@@ -33,6 +35,10 @@ func (h *Hello) Hello(c *gin.Context) {
 }
 
 func (h *Hello) Report(c *gin.Context) {
+	tag := rand.Intn(2)
+	if tag == 1 {
+		time.Sleep(10 * time.Second)
+	}
 
 	var p full
 	err := json.NewDecoder(c.Request.Body).Decode(&p)
@@ -56,6 +62,7 @@ func (h *Hello) Report(c *gin.Context) {
 
 func (h *Hello) Sign(c *gin.Context) {
 
+	time.Sleep(time.Second * 20)
 	body, _ := io.ReadAll(c.Request.Body)
 	key := ""
 	//for k,v :=range c.Request.Header {
