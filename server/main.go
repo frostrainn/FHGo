@@ -8,7 +8,7 @@ import (
 
 func main() {
 	r := initialize.Routers()
-	http.ListenAndServe(":8080", r)
+	http.ListenAndServe(":5486", r)
 	//err := r.Run(":8080")
 	//err = endless.ListenAndServe(":8080", r)	//优雅重启
 	//if err != nil {
