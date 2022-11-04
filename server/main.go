@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fhgo/global"
 	"fhgo/initialize"
 	"net/http"
 	_ "net/http/pprof"
@@ -25,7 +26,7 @@ func init() {
 	//pprof 服务器
 	// /debug/pprof
 	go func() {
-		err := http.ListenAndServe(":6060", nil)
+		err := http.ListenAndServe(global.Config.Pprof.Port, nil)
 		if err != nil {
 			return
 		}
