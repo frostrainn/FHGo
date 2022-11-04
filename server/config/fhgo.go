@@ -1,4 +1,4 @@
-package conf
+package config
 
 type FHGo struct {
 	Port string
@@ -6,5 +6,6 @@ type FHGo struct {
 }
 
 type Pprof struct {
-	Port string
+	Enabled bool
+	Port    string
 }

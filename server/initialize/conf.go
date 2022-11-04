@@ -4,7 +4,7 @@ import "github.com/spf13/viper"
 
 func InitConfig() {
 	v := viper.New()
-	v.AddConfigPath("conf")
+	v.AddConfigPath("config")
 	v.SetConfigType("yaml")
 	v.SetConfigName("test.yaml")
 

@@ -1,6 +1,7 @@
 FHGo:
   Port: 8974
   Pprof:
+    Enabled: true
     Port: 6060
 Redis:
   Host: 127.0.0.1

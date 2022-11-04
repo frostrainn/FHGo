@@ -1,6 +1,7 @@
 package global
 
 import (
+	"fhgo/config"
 	"github.com/go-redis/redis/v8"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
@@ -26,4 +27,5 @@ var (
 	Logger *zap.SugaredLogger
 	Redis  *redis.Client
 	lock   sync.RWMutex
+	Config *config.Conf
 )
