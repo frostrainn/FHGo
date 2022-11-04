@@ -1,5 +1,7 @@
 FHGo:
   Port: 8974
+  Pprof:
+    Port: 6060
 Redis:
   Host: 127.0.0.1
   Port: 6379
