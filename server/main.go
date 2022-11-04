@@ -18,6 +18,7 @@ func main() {
 
 func init() {
 	initialize.InitLogger()
+	initialize.InitConfig()  //读取Config文件
 	initialize.ConnDB()      //连接数据库
 	initialize.CreateTable() //创建表
 	initialize.ConnRedis()   //连接Redis
