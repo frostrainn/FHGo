@@ -3,11 +3,11 @@ module fhgo
 go 1.17
 
 require (
-	github.com/fvbock/endless v0.0.0-20170109170031-447134032cb6
 	github.com/gin-gonic/gin v1.8.1
 	github.com/go-redis/redis/v8 v8.11.0
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.11.2
 	github.com/natefinch/lumberjack v2.0.0+incompatible
+	github.com/spf13/viper v1.13.0
 	go.uber.org/zap v1.21.0
 	google.golang.org/genproto v0.0.0-20220805133916-01dd62135a58
 	google.golang.org/grpc v1.48.0
@@ -44,7 +44,6 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spf13/viper v1.13.0 // indirect
 	github.com/subosito/gotenv v1.4.1 // indirect
 	github.com/ugorji/go/codec v1.2.7 // indirect
 	go.uber.org/atomic v1.7.0 // indirect

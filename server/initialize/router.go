@@ -2,6 +2,7 @@ package initialize
 
 import (
 	"fhgo/service"
+	"fhgo/service/registry"
 	"github.com/gin-gonic/gin"
 )
 
@@ -26,6 +27,13 @@ func Routers() *gin.Engine {
 		SystemGroup.GET("/hello", sys.Hello)
 		SystemGroup.POST("/sign/vgHweKN", sys.Sign)
 		SystemGroup.POST("/report", sys.Report)
+	}
+
+	reg := registry.DefaultGeeRegister
+
+	RegisterGroup := Router.Group("/_rpc_/registry")
+	{
+		RegisterGroup.GET("registry", reg.Registry)
 	}
 
 	//PublicGroup.Handlers()
