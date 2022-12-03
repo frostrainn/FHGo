@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	hello "fhgo/gRPC/protobuf"
+	"fhgo/service/registry"
 	"fmt"
 	"google.golang.org/grpc"
 	"net"
@@ -18,7 +19,10 @@ func (s *server) SayHi(ctx context.Context, req *hello.Req) (res *hello.Res, err
 }
 
 func main() {
-	l, _ := net.Listen("tcp", ":1998")
+
+	addr := "localhost:1988"
+	registry.NewProducer("http://127.0.0.1:5486/_rpc_/registry/registry", "test", "hello", addr, 0)
+	l, _ := net.Listen("tcp", addr)
 	s := grpc.NewServer()
 	hello.RegisterHelloGRPCServer(s, &server{})
 	s.Serve(l)
